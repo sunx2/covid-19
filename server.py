@@ -4,9 +4,10 @@ import os
 import json
 country = json.load(open("countrycodes.json","r"))
 thresolds = {
-    "HIGH" : [0.50,1],
-    "MEDIUM": [0.25,0.50],
-    "LOW": [0,0.25]
+    "HIGH" : [20,100],
+    "MEDIUM": [10,20],
+    "LOW": [2,10],
+    "VERYLOW": [0,2]
 }
 @route('/res/<filepath:path>', name='res')
 def resources(filepath):
@@ -33,7 +34,7 @@ def world_map(argu):
             try:
                 keyin = "LOW"
                 for d in list(thresolds.keys()):
-                    if ((i[argu]/max(tempf)*100) >= thresolds[d][0]) and ((i[argu]/max(tempf)*100) <= thresolds[d][1]):
+                    if ((i[argu]/max(tempf))*100 >= thresolds[d][0]) and ((i[argu]/max(tempf))*100 <= thresolds[d][1]):
                         keyin = d
             except Exception as e:
                 keyin = "UNKNOWN"
@@ -43,7 +44,7 @@ def world_map(argu):
                 try:
                     keyin = "LOW"
                     for d in list(thresolds.keys()):
-                        if ((i[argu]/max(tempf)*100) >= thresolds[d][0]) and ((i[argu]/max(tempf)*100) <= thresolds[d][1]):
+                        if ((i[argu]/max(tempf))*100 >= thresolds[d][0]) and ((i[argu]/max(tempf))*100 <= thresolds[d][1]):
                             keyin = d
                 except:
                     keyin = "UNKNOWN"
@@ -62,6 +63,6 @@ def world_map(argu):
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    run(host="0.0.0.0" , port=port , debug= False)
-    #run(debug=True)
+    #run(host="0.0.0.0" , port=port , debug= False)
+    run(debug=True)
 

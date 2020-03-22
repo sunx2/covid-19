@@ -100,6 +100,7 @@
         HIGH: "#afafaf",
         LOW: "#123456",
         MEDIUM: "#009ddc",
+        VERYLOW: "#87cefa",
         UNKNOWN: "rgb(0,0,0)",
         defaultFill: "#080808"
       },
