@@ -12,5 +12,6 @@ def homepage():
 @route("/worldmap" , name="worldmap")
 def world_map():
     return template('worldmap.tpl' ,url=url)
-run()
+
+run(host="0.0.0.0" , port=5000 , debug= False)
 
