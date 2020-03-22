@@ -1,5 +1,5 @@
 from bottle import get, static_file, run , route, template, url , request
-
+import os
 @route('/res/<filepath:path>', name='res')
 def resources(filepath):
     return static_file(filepath, root='./res')
