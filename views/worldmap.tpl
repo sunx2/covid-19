@@ -107,7 +107,7 @@
       geographyConfig: {
             popupTemplate: function(geo, data) {
 
-                return `<span class="popup">total ${window.location.pathname.split('/')[2]} : ${data.numberOfThings}</span>`
+                return `<div class="popup"><strong>${geo.properties.name}</strong><hr style="color:red">total <span style="color:blue">${window.location.pathname.split('/')[2]}</span> : ${data.numberOfThings}</div>`
             }
         }
     });

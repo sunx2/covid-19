@@ -21,7 +21,7 @@ def homepage():
 def world_map(argu):
     datatosend = {}
     datalist = requests.get("https://corona.lmao.ninja/countries").json()
-    if argu not in list[datalist.keys()][1:]:
+    if argu not in datalist[0].keys():
         return "Wrong Argument"
     tempf = []
     for i in datalist:
@@ -53,11 +53,15 @@ def world_map(argu):
                     pass
             except:
                 continue
+    tmpl = '''
+        <span class="popup">total ${window.location.pathname.split('/')[2]}(${geo.properties.name}) : ${data.numberOfThings}</span>
+
+    '''
     return template('worldmap.tpl' ,url=url ,datalist=datatosend)
 
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    #run(host="0.0.0.0" , port=port , debug= False)
-    run(debug=True)
+    run(host="0.0.0.0" , port=port , debug= False)
+    #run(debug=True)
 
