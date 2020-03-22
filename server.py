@@ -13,5 +13,8 @@ def homepage():
 def world_map():
     return template('worldmap.tpl' ,url=url)
 
-run(host="0.0.0.0" , port=5000 , debug= False)
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    run(host="0.0.0.0" , port=port , debug= False)
 
