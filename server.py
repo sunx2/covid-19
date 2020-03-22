@@ -33,7 +33,7 @@ def world_map(argu):
             try:
                 keyin = "LOW"
                 for d in list(thresolds.keys()):
-                    if ((i[argu]/max(tempf)*100) > thresolds[d][0]) and ((i[argu]/max(tempf)*100) < thresolds[d][1]):
+                    if ((i[argu]/max(tempf)*100) >= thresolds[d][0]) and ((i[argu]/max(tempf)*100) <= thresolds[d][1]):
                         keyin = d
             except Exception as e:
                 keyin = "UNKNOWN"
