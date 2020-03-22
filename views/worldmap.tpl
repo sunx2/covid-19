@@ -34,6 +34,10 @@
         transform: translate(0%, 1000%);
         pointer-events: none;
       }
+      .popup {
+        background: white;
+        font-size: small;
+      }
       #headerWrapper {
         position: fixed;
         text-align: center;
@@ -89,6 +93,7 @@
     <div id="worldMap"></div>
   </body>
   <script>
+   var datalist = JSON.parse("{{datalist}}".replace(/&#039;/g,'"'))
     var map = new Datamap({
       element: document.getElementById("worldMap"),
       fills: {
@@ -98,16 +103,13 @@
         UNKNOWN: "rgb(0,0,0)",
         defaultFill: "#080808"
       },
-      data: {
-        IND: {
-          fillKey: "LOW",
-          numberOfThings: 2002
-        },
-        USA: {
-          fillKey: "MEDIUM",
-          numberOfThings: 10381
+      data : datalist,
+      geographyConfig: {
+            popupTemplate: function(geo, data) {
+
+                return `<span class="popup">total ${window.location.pathname.split('/')[2]} : ${data.numberOfThings}</span>`
+            }
         }
-      }
     });
   </script>
 </html>
