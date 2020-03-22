@@ -1,8 +1,8 @@
 <html>
   <head>
-    <script src="d3.min.js"></script>
-    <script src="topojson.min.js"></script>
-    <script src="datamaps.world.min.js"></script>
+    <script src="{{ url('res', filepath='js/d3.min.js') }}"></script>
+    <script src="{{ url('res', filepath='js/topojson.min.js') }}"></script>
+    <script src="{{ url('res', filepath='js/datamaps.world.min.js') }}"></script>
     <link
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"

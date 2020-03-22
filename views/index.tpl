@@ -11,6 +11,7 @@
     />
 
     rel="stylesheet" />
+    <link rel="shortcut icon" href="{{ url('res', filepath='icon/favicon.ico') }}" type="image/x-icon" />
     <style>
       html {
         background-color: #080808;
@@ -94,7 +95,7 @@
     <div id="exitPanel"></div>
     <div id="bg">
       <video autoplay muted loop id="videoBG">
-        <source src="res/bg01.mp4" type="video/mp4" />
+        <source src="{{ url('res', filepath='video/bg01.mp4') }}" type="video/mp4" />
       </video>
     </div>
     <div id="mainSection">
@@ -107,7 +108,7 @@
   <script>
     var mainCTA = document.getElementById("mainCTA");
     mainCTA.onclick = function() {
-      self.location = "worldmap.html";
+      self.location = "/worldmap";
     };
   </script>
 </html>
