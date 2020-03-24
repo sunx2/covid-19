@@ -2,6 +2,8 @@ from bottle import get, static_file, run , route, template, url , request
 import requests
 import os
 import json
+import datetime
+
 country = json.load(open("countrycodes.json","r"))
 thresolds = {
     "HIGH" : [20,100],
@@ -21,7 +23,14 @@ def homepage():
 @route("/worldmap/<argu>" , name="worldmap")
 def world_map(argu):
     datatosend = {}
-    datalist = requests.get("https://corona.lmao.ninja/countries").json()
+    appdata = json.load(open("app.json" ,"r"))
+    if datetime.datetime.now().timestamp()-100000 > appdata["time"] :
+        appdata["time"] = datetime.datetime.now().timestamp()
+        json.dump(appdata,open("app.json","w"))
+        datalist = requests.get(appdata["url"]).json()
+        json.dump(datalist ,open("datalist.json" , "w"))
+    else:
+        datalist = json.load(open("datalist.json" , 'r'))
     if argu not in datalist[0].keys():
         return "Wrong Argument"
     tempf = []
@@ -63,6 +72,6 @@ def world_map(argu):
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    run(host="0.0.0.0" , port=port , debug= False)
-    #run(debug=True)
+    #run(host="0.0.0.0" , port=port , debug= False)
+    run(debug=True)
 
