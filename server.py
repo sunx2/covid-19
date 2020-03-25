@@ -7,9 +7,9 @@ import datetime
 country = json.load(open("countrycodes.json","r"))
 thresolds = {
     "HIGH" : [20,100],
-    "MEDIUM": [10,20],
-    "LOW": [2,10],
-    "VERYLOW": [0,2]
+    "MEDIUM": [1,20],
+    "LOW": [0.001,1],
+    "VERYLOW": [0,0]
 }
 @route('/res/<filepath:path>', name='res')
 def resources(filepath):
