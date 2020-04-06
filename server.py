@@ -19,6 +19,33 @@ def resources(filepath):
 def homepage():
     return template('index.tpl' , url=url)
 
+@route('/country/<argu>')
+def countries(argu):
+    url_to_get = f"https://corona.lmao.ninja/v2/historical/{argu}?lastdays=100"
+    datatosend = {}
+    data = requests.get(url_to_get).json()
+    x_axis = []
+    y_axis = []
+    try:
+        data = {key:value for key, value in data['timeline']['cases'].items() if value != 0}
+        new_dict = {}
+        for key, value in data.items():
+            new_dict_count = list(new_dict.values()).count(value)
+            old_dict_count = list(data.values()).count(value)
+            if new_dict_count < old_dict_count / 2:
+                new_dict[key] = value
+        for date, cases in new_dict.items():
+            date = date.split('/')
+            date = date[1] + '/' + date[0]
+            x_axis.append(date)
+            y_axis.append(cases)
+    except KeyError:
+        return data['message']
+    datatosend['x'] = [0] + x_axis
+    datatosend['y'] = [0] + y_axis
+    datatosend['length'] = len(x_axis)
+    datatosend['country'] = argu.capitalize()
+    return template('countryGraph.tpl', url = url, datalist=datatosend)
 
 @route("/worldmap/<argu>" , name="worldmap")
 def world_map(argu):
@@ -71,7 +98,7 @@ def world_map(argu):
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    run(host="0.0.0.0" , port=port , debug= False)
-    #run(debug=True)
+    # port = int(os.environ.get("PORT", 5000))
+    # run(host="0.0.0.0" , port=port , debug= False)
+    run(debug=True)
 
