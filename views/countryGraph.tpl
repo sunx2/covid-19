@@ -1,6 +1,6 @@
 <html>
   <head>
-    <script src="\res\js\chart.js"></script>
+    <script src="covid-19-master\res\js\Chart.js"></script>
     <!-- ^^ REPLACE THIS WITH PATH TO Chart.js -->
     <link
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
