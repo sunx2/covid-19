@@ -44,7 +44,7 @@ def countries(argu):
     datatosend['x'] = [0] + x_axis
     datatosend['y'] = [0] + y_axis
     datatosend['length'] = len(x_axis)
-    datatosend['country'] = argu.capitalize()
+    datatosend['country'] = argu.title()
     return template('countryGraph.tpl', url = url, datalist=datatosend)
 
 @route("/worldmap/<argu>" , name="worldmap")
@@ -98,7 +98,7 @@ def world_map(argu):
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    run(host="0.0.0.0" , port=port , debug= False)
-    #run(debug=True)
+    # port = int(os.environ.get("PORT", 5000))
+    # run(host="0.0.0.0" , port=port , debug= False)
+    run(debug=True)
 
