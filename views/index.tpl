@@ -11,10 +11,14 @@
     />
 
     rel="stylesheet" />
-    <link rel="shortcut icon" href="{{ url('res', filepath='icon/favicon.ico') }}" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="{{ url('res', filepath='icon/favicon.ico') }}"
+      type="image/x-icon"
+    />
     <style>
       html {
-        background-color: #080808;
+        background-color: #000000;
       }
       #mainSection {
         position: absolute;
@@ -95,7 +99,10 @@
     <div id="exitPanel"></div>
     <div id="bg">
       <video autoplay muted loop id="videoBG">
-        <source src="{{ url('res', filepath='video/bg01.mp4') }}" type="video/mp4" />
+        <source
+          src="{{ url('res', filepath='video/bg01.mp4') }}"
+          type="video/mp4"
+        />
       </video>
     </div>
     <div id="mainSection">
@@ -107,7 +114,7 @@
   </body>
   <script>
     var mainCTA = document.getElementById("mainCTA");
-    mainCTA.onclick = function() {
+    mainCTA.onclick = function () {
       self.location = "/worldmap/cases";
     };
   </script>

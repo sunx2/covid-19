@@ -11,27 +11,28 @@
     <style>
       html {
         background-color: #000000;
+        background-image: url("{{ url('res', filepath='images/bg.png') }}");
+        overflow: hidden;
       }
       #worldMap {
-        position: fixed;
-        height: 95%;
         width: 100%;
         margin: auto;
         aspect-ratio: 1.777777777777778;
         opacity: 80%;
-        animation: introHeader 3s;
+        animation: introMap 2s;
         transform: scale(1, 1.1); /* To cure my OCD */
         z-index: 1;
-        transform: translate(0%, 5%);
+        transform: translate(0%, -5%);
+        overflow: hidden;
       }
       #mainHeaderFirst {
         font-family: "Roboto", sans-serif;
         color: white;
         font-size: 30px;
-        animation: introHeader 5s forwards;
+        animation: introHeader 2s forwards;
         letter-spacing: 1px;
         vertical-align: middle;
-        transform: translate(0%, 1000%);
+        transform: translate(0%, 800%);
         pointer-events: none;
       }
       .popup {
@@ -41,13 +42,15 @@
       #headerWrapper {
         position: fixed;
         text-align: center;
-        height: 99%;
-        width: 100%;
-        animation: headerBG 5s forwards;
-        margin: auto;
+        height: 101%;
+        width: 101%;
+        animation: headerBG 2s forwards;
+        margin: 0;
         background-color: black;
         z-index: 2;
         pointer-events: none;
+        left: -1%;
+        top: -1%;
       }
       @keyframes headerBG {
         60% {
@@ -84,33 +87,62 @@
           opacity: 80%;
         }
       }
+      #stats {
+        position: absolute;
+        flex-direction: row;
+        color: white;
+        font-family: "Roboto", sans-serif;
+        line-height: 2px;
+        opacity: 80%;
+      }
     </style>
   </head>
   <body>
     <div id="headerWrapper">
       <h1 id="mainHeaderFirst">World Map (affected regions)</h1>
     </div>
+    <div id="stats">
+      <p class="stats" style="font-size: xx-large;">Total Infected: X</p>
+      <p class="stats">Total Deaths: Y</p>
+      <p class="stats">Total Recoveries: Z</p>
+    </div>
     <div id="worldMap"></div>
   </body>
   <script>
-   var datalist = JSON.parse("{{datalist}}".replace(/&#039;/g,'"'))
+    var datalist = JSON.parse("{{datalist}}".replace(/&#039;/g, '"'));
     var map = new Datamap({
+      responsive: true,
       element: document.getElementById("worldMap"),
       fills: {
-        HIGH: "#afafaf",
-        LOW: "#123456",
-        MEDIUM: "#009ddc",
-        VERYLOW: "#87cefa",
+        HIGH: "#0F2A45",
+        LOW: "#1c60a0",
+        MEDIUM: "#2f87e0",
+        VERYLOW: "#409cd6",
         UNKNOWN: "rgb(0,0,0)",
-        defaultFill: "#080808"
+        defaultFill: "#080808",
       },
-      data : datalist,
+      data: datalist,
+      done: function (datamap) {
+        datamap.svg
+          .selectAll(".datamaps-subunit")
+          .on("click", function (geography) {
+            window.location.assign(
+              "/country/" + geography.properties.name.toLowerCase()
+            ); //Use this to open chart page
+          });
+      },
       geographyConfig: {
-            popupTemplate: function(geo, data) {
-
-                return `<div class="popup"><strong>${geo.properties.name}</strong><hr style="color:red">total <span style="color:blue">${window.location.pathname.split('/')[2]}</span> : ${data.numberOfThings}</div>`
-            }
-        }
+        popupTemplate: function (geo, data) {
+          return `<div class="popup"><strong>${
+            geo.properties.name
+          }</strong><hr style="color:red">total <span style="color:blue">${
+            window.location.pathname.split("/")[2]
+          }</span> : ${data.numberOfThings}</div>`;
+        },
+      },
+    });
+    window.addEventListener("resize", function () {
+      map.resize();
     });
   </script>
 </html>
