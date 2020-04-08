@@ -29,10 +29,10 @@ def countries(argu):
     url_to_get = f"https://corona.lmao.ninja/v2/historical/{argu}?lastdays=100"
     total_cases_url = f"https://corona.lmao.ninja/countries/{argu}"
     datatosend = {}
-    total_cases = requests.get(total_cases_url).json()['cases']
     data = requests.get(url_to_get).json()
     dates = []
     try:
+        total_cases = requests.get(total_cases_url).json()['cases']
         new_dict = {}
         new_data = {key:value for key, value in data['timeline']['cases'].items() if value != 0}
         # print(new_data)
