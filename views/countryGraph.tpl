@@ -46,6 +46,8 @@
     document.getElementById("numberOfTotalCases").innerHTML = datalist.total_cases; //Change this to total cases
     var ctx = document.getElementById("myChart").getContext("2d");
     Chart.defaults.global.defaultFontSize = 23
+    Chart.defaults.global.elements.point.radius = 5
+    Chart.defaults.global.elements.point.hoverRadius = 7
     var myChart = new Chart(ctx, {
       type: "line",
       data: {
