@@ -115,14 +115,17 @@
       <h1 id="mainHeaderFirst">World Map (affected regions)</h1>
     </div>
     <div id="stats">
-      <p class="stats" style="font-size: xx-large;">Total Infected: X</p>
-      <p class="stats">Total Deaths: Y</p>
-      <p class="stats">Total Recoveries: Z</p>
+      <p class="stats" style="font-size: xx-large;">Total Cases: <span id = "totinf"></span></p> 
+      <p class="stats">Total Deaths: <span id = "totded"></span></p>
+      <p class="stats">Total Recoveries: <span id = "totrec"></span></p>
     </div>
     <div id="worldMap"></div>
   </body>
   <script>
     var datalist = JSON.parse("{{datalist}}".replace(/&#039;/g, '"'));
+    document.getElementById('totinf').innerHTML = datalist.all_cases
+    document.getElementById('totded').innerHTML = datalist.all_deaths
+    document.getElementById('totrec').innerHTML = datalist.all_recovered
     var map = new Datamap({
       responsive: true,
       element: document.getElementById("worldMap"),
