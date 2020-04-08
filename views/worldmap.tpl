@@ -137,9 +137,9 @@
       geographyConfig: {
         popupTemplate: function (geo, data) {
           return `<div class="popup" style="padding: 10px;">
-          Total Cases :<strong> ${data.cases} </strong> <br>
-          Total Recovered: <strong> ${data.recovered} </strong> <br>
-          Total Deaths: <strong> ${data.deaths} </strong>
+          Total Cases : <font color = "blue"> <strong> ${data.cases} </strong> </font> <br>
+          Total Recovered: <font color = "green"> <strong> ${data.recovered} </strong> </font> <br>
+          Total Deaths: <font color = "red"> <strong> ${data.deaths} </strong> </font>
           
           </div>`;
         },
