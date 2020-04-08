@@ -52,7 +52,7 @@
         labels: datalist.dates, //X AXIS
         datasets: [
           {
-            label: "# of cases",
+            label: "Cases",
             data: datalist.cases, //Y AXIS
             backgroundColor: Array(datalist.length).fill(
               "rgba(48, 90, 242, 0.2)"
@@ -62,7 +62,7 @@
             order: 3,
           },
           {
-            label: "# of recoveries",
+            label: "Recoveries",
             data: datalist.recovered, //CHANGE THIS TO RECOVERY DATASET
             backgroundColor: Array(datalist.length).fill(
               "rgba(50, 205, 50, 0.2)"
@@ -72,7 +72,7 @@
             order: 2,
           },
           {
-            label: "# of deaths",
+            label: "Deaths",
             data: datalist.deaths, //Y AXIS
             backgroundColor: Array(datalist.length).fill(
               "rgba(255, 0, 0, 0.2)"
