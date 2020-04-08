@@ -52,6 +52,10 @@
   <script>
     var datalist = JSON.parse("{{datalist}}".replace(/&#039;/g, '"'));
     document.getElementById("CountryName").innerHTML = datalist.country;
+    document.getElementById("numberOfTotalDeaths").innerHTML = datalist.total_deaths;
+    document.getElementById("numberOfTotalRecoveries").innerHTML = datalist.total_recovered;
+    document.getElementById("CasesToday").innerHTML = datalist.today_cases;
+    document.getElementById("DeathsToday").innerHTML = datalist.today_deaths;
     document.getElementById("numberOfTotalCases").innerHTML =
       datalist.total_cases; //Change this to total cases
     var ctx = document.getElementById("myChart").getContext("2d");
