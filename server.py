@@ -26,13 +26,19 @@ def homepage():
 
 @route('/country/<argu>')
 def countries(argu):
-    url_to_get = f"https://corona.lmao.ninja/v2/historical/{argu}?lastdays=30"
+    url_to_get = f"https://corona.lmao.ninja/v2/historical/{argu}?lastdays=100"
     total_cases_url = f"https://corona.lmao.ninja/countries/{argu}"
     datatosend = {}
+    
     data = requests.get(url_to_get).json()
+    data_country = requests.get(total_cases_url).json()
     dates = []
     try:
-        total_cases = requests.get(total_cases_url).json()['cases']
+        datatosend['total_cases'] = format(data_country['cases'], ',d')
+        datatosend['total_deaths'] = format(data_country['deaths'], ',d')
+        datatosend['today_cases'] = format(data_country['todayCases'], ',d')
+        datatosend['today_deaths'] = format(data_country['todayDeaths'], ',d')
+        datatosend['total_recovered'] = format(data_country['recovered'], ',d')
         new_dict = {}
         new_data = {key:value for key, value in data['timeline']['cases'].items() if value != 0}
         # print(new_data)
@@ -57,13 +63,17 @@ def countries(argu):
         return data['message']
     datatosend['length'] = len(dates)
     datatosend['country'] = argu.title()
-    datatosend['total_cases'] = format(total_cases, ',d')
-    print(datatosend)
+    # print(datatosend)
     return template('countryGraph.tpl', url = url, datalist=datatosend)
 
 @route("/worldmap/<argu>" , name="worldmap")
 def world_map(argu):
     datatosend = {}
+    all_url = "https://corona.lmao.ninja/all"
+    data_all = requests.get(all_url).json()
+    datatosend['all_cases'] = format(data_all['cases'], ',d')
+    datatosend['all_deaths'] = format(data_all['deaths'], ',d')
+    datatosend['all_recovered'] = format(data_all['recovered'], ',d')
     with open("app.json" ,"r") as f:
         appdata = json.load(f)
     if datetime.datetime.now().timestamp()-100000 > appdata["time"] :
@@ -108,12 +118,16 @@ def world_map(argu):
                     pass
             except:
                 continue
-    tmpl = '''<span class="popup" style="padding: 10px;">Total Cases: ${data.numberOfThings}</span>'''
+    tmpl = '''
+        <span class="popup">Total ${window.location.pathname.split('/')[2]}(${geo.properties.name}) : ${data.numberOfThings}</span>
+
+    '''
+    print(datatosend)
     return template('worldmap.tpl' ,url=url ,datalist=datatosend)
 
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     run(host="0.0.0.0" , port=port , debug= False)
-    #run(debug=True)
+    # run(debug=True)
 
