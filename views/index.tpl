@@ -125,7 +125,7 @@
   <script>
     var mainCTA = document.getElementById("mainCTA");
     mainCTA.onclick = function () {
-      self.location = "/worldmap/cases";
+      self.location = "/worldmap/";
     };
   </script>
 </html>
