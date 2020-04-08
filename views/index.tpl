@@ -9,8 +9,6 @@
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
     />
-
-    rel="stylesheet" />
     <link
       rel="shortcut icon"
       href="{{ url('res', filepath='icon/favicon.ico') }}"
@@ -19,6 +17,7 @@
     <style>
       html {
         background-color: #000000;
+        overflow: hidden;
       }
       #mainSection {
         position: absolute;
@@ -92,6 +91,17 @@
         bottom: 0;
         min-width: 100%;
         min-height: 100%;
+      }
+      @media screen and (max-width: 600px) {
+        #mainSection {
+          width: 90%;
+          height: 90%;
+          padding: 10%;
+          padding-top: 20%;
+        }
+        #mainHeaderFirst {
+          animation: introCTA 4s;
+        }
       }
     </style>
   </head>

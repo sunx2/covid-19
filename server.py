@@ -26,7 +26,7 @@ def homepage():
 
 @route('/country/<argu>')
 def countries(argu):
-    url_to_get = f"https://corona.lmao.ninja/v2/historical/{argu}?lastdays=100"
+    url_to_get = f"https://corona.lmao.ninja/v2/historical/{argu}?lastdays=30"
     total_cases_url = f"https://corona.lmao.ninja/countries/{argu}"
     datatosend = {}
     data = requests.get(url_to_get).json()
@@ -108,15 +108,12 @@ def world_map(argu):
                     pass
             except:
                 continue
-    tmpl = '''
-        <span class="popup">Total ${window.location.pathname.split('/')[2]}(${geo.properties.name}) : ${data.numberOfThings}</span>
-
-    '''
+    tmpl = '''<span class="popup" style="padding: 10px;">Total Cases: ${data.numberOfThings}</span>'''
     return template('worldmap.tpl' ,url=url ,datalist=datatosend)
 
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    #run(host="0.0.0.0" , port=port , debug= False)
-    run(debug=True)
+    run(host="0.0.0.0" , port=port , debug= False)
+    #run(debug=True)
 

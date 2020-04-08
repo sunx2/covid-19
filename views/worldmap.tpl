@@ -14,16 +14,18 @@
         background-image: url("{{ url('res', filepath='images/bg.png') }}");
         overflow: hidden;
       }
+      body {
+        display: flex;
+      }
       #worldMap {
-        width: 100%;
         margin: auto;
         aspect-ratio: 1.777777777777778;
         opacity: 80%;
         animation: introMap 2s;
         transform: scale(1, 1.1); /* To cure my OCD */
         z-index: 1;
-        transform: translate(0%, -5%);
         overflow: hidden;
+        width: 100%;
       }
       #mainHeaderFirst {
         font-family: "Roboto", sans-serif;
@@ -95,6 +97,17 @@
         line-height: 2px;
         opacity: 80%;
       }
+      @media screen and (max-width: 600px) {
+        #mainHeaderFirst {
+          animation: introMap 1s;
+        }
+        #worldMap {
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+        }
+      }
     </style>
   </head>
   <body>
@@ -133,11 +146,8 @@
       },
       geographyConfig: {
         popupTemplate: function (geo, data) {
-          return `<div class="popup"><strong>${
-            geo.properties.name
-          }</strong><hr style="color:red">total <span style="color:blue">${
-            window.location.pathname.split("/")[2]
-          }</span> : ${data.numberOfThings}</div>`;
+          return `<div class="popup" style="padding: 10px;">
+          Total Cases</span> :<strong> ${data.numberOfThings}</div>`;
         },
       },
     });
