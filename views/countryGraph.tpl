@@ -45,7 +45,7 @@
     document.getElementById("CountryName").innerHTML = datalist.country;
     document.getElementById("numberOfTotalCases").innerHTML = datalist.total_cases; //Change this to total cases
     var ctx = document.getElementById("myChart").getContext("2d");
-    Chart.defaults.global.defaultFontSize = 25
+    Chart.defaults.global.defaultFontSize = 23
     var myChart = new Chart(ctx, {
       type: "line",
       data: {
