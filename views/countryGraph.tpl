@@ -23,29 +23,39 @@
         padding-top: 10px;
         position: absolute;
       }
-      #totalCases {
+      #countryInfo {
         text-align: center;
         font-family: "Roboto", sans-serif;
-        width: 99%;
+        width: 100%;
+        position: relative;
         color: white;
-        position: absolute;
-        top: -1%;
+        transform: translate(0px, -50px);
+        opacity: 80%;
       }
     </style>
   </head>
   <body>
     <h1 id="CountryName"></h1>
-    <h4 id="totalCases">Total Cases: <span id="numberOfTotalCases"></span></h4>
     <div style="position: relative; margin: auto; height: 100%; width: 100%;">
       <canvas id="myChart"></canvas>
+    </div>
+    <div id="countryInfo">
+      <span>Total Cases: <span id="numberOfTotalCases"></span></span>
+      <span>, Total Deaths: <span id="numberOfTotalDeaths"></span></span>
+      <span
+        >, Total Recoveries: <span id="numberOfTotalRecoveries"></span
+      ></span>
+      <span>, Cases Today: <span id="CasesToday"></span></span>
+      <span>, Deaths Today: <span id="DeathsToday"></span></span>
     </div>
   </body>
   <script>
     var datalist = JSON.parse("{{datalist}}".replace(/&#039;/g, '"'));
     document.getElementById("CountryName").innerHTML = datalist.country;
-    document.getElementById("numberOfTotalCases").innerHTML = datalist.total_cases; //Change this to total cases
+    document.getElementById("numberOfTotalCases").innerHTML =
+      datalist.total_cases; //Change this to total cases
     var ctx = document.getElementById("myChart").getContext("2d");
-    Chart.defaults.global.defaultFontSize = 23
+    Chart.defaults.global.defaultFontSize = 23;
     var myChart = new Chart(ctx, {
       type: "line",
       data: {
@@ -58,7 +68,7 @@
               "rgba(48, 90, 242, 0.2)"
             ),
             borderColor: Array(datalist.length).fill("rgba(48, 90, 242, 1)"),
-            borderWidth: 1, 
+            borderWidth: 1,
             order: 3,
           },
           {
@@ -81,7 +91,6 @@
             borderWidth: 1,
             order: 1,
           },
-          
         ],
       },
       options: {

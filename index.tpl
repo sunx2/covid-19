@@ -9,13 +9,7 @@
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
     />
-
-    rel="stylesheet" />
-    <link
-      rel="shortcut icon"
-      href="{{ url('res', filepath='icon/favicon.ico') }}"
-      type="image/x-icon"
-    />
+    <link rel="icon" href="{{ url('res', filepath='/icon/favicon.png') }}" />
     <style>
       html {
         background-color: #000000;
