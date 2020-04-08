@@ -44,18 +44,18 @@ def countries(argu):
                 dates.append(date_format(key))
                 # print(date_format(key))
         # print(new_dict)
-        datatosend['dates'] = [0] + dates
+        datatosend['dates'] = dates
         
         for i in data['timeline']:
             y_axis = []
             for key, value in data['timeline'][i].items():
                 if date_format(key) in dates:
                     y_axis.append(value)
-            datatosend[i] = [0] + y_axis
+            datatosend[i] = y_axis
             
     except KeyError:
         return data['message']
-    datatosend['length'] = len(dates) + 1
+    datatosend['length'] = len(dates)
     datatosend['country'] = argu.title()
     datatosend['total_cases'] = format(total_cases, ',d')
     print(datatosend)
