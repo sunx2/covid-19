@@ -21,7 +21,7 @@
         aspect-ratio: 1.777777777777778;
         opacity: 80%;
         animation: introMap 2s;
-        transform: scale(1, 1.1); /* To cure my OCD */
+        transform: scale(1, 1.1);
         z-index: 1;
         overflow: hidden;
         display: flex;
@@ -160,8 +160,8 @@
       },
       geographyConfig: {
         popupTemplate: function (geo, data) {
-          return `<div class="popup" style="padding: 5px; border-radius: 5px; opacity: 90%;">
-           <p><strong>${geo.properties.name}</p>
+          return `<div class="popup" style="padding: 10px;">
+          <strong> ${geo.properties.name} </strong> <hr>
           Total Cases : <font color = "blue"> <strong> ${data.cases} </strong> </font> <br>
           Total Recovered: <font color = "green"> <strong> ${data.recovered} </strong> </font> <br>
           Total Deaths: <font color = "red"> <strong> ${data.deaths} </strong> </font>
