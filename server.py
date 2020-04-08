@@ -66,8 +66,8 @@ def countries(argu):
     # print(datatosend)
     return template('countryGraph.tpl', url = url, datalist=datatosend)
 
-@route("/worldmap/<argu>" , name="worldmap")
-def world_map(argu):
+@route("/worldmap/" , name="worldmap")
+def world_map():
     datatosend = {}
     all_url = "https://corona.lmao.ninja/all"
     data_all = requests.get(all_url).json()
@@ -86,34 +86,34 @@ def world_map(argu):
     else:
         with open("datalist.json" , 'r') as f:
             datalist = json.load(f)
-    if argu not in datalist[0].keys():
+    if 'cases' not in datalist[0].keys():
         return "Wrong Argument"
     tempf = []
     for i in datalist:
         if len(tempf) == 0 :
-            tempf += [i[argu]]
+            tempf += [i['cases']]
         else:
             pass
         try:
             try:
                 keyin = "LOW"
                 for d in list(thresolds.keys()):
-                    if ((i[argu]/max(tempf))*100 >= thresolds[d][0]) and ((i[argu]/max(tempf))*100 <= thresolds[d][1]):
+                    if ((i['cases']/max(tempf))*100 >= thresolds[d][0]) and ((i['cases']/max(tempf))*100 <= thresolds[d][1]):
                         keyin = d
             except Exception as e:
                 keyin = "UNKNOWN"
-            datatosend[country[i["country"]]] = {"fillKey":keyin , "numberOfThings":i[argu]}
+            datatosend[country[i["country"]]] = {"fillKey":keyin , "cases": format(i['cases'], ',d'), "deaths": format(i['deaths'], ',d'), "recovered": format(i['recovered'], ',d')}
         except Exception as e :
             try:
                 try:
                     keyin = "LOW"
                     for d in list(thresolds.keys()):
-                        if ((i[argu]/max(tempf))*100 >= thresolds[d][0]) and ((i[argu]/max(tempf))*100 <= thresolds[d][1]):
+                        if ((i['cases']/max(tempf))*100 >= thresolds[d][0]) and ((i['cases']/max(tempf))*100 <= thresolds[d][1]):
                             keyin = d
                 except:
                     keyin = "UNKNOWN"
                 if len(i["country"]) == 3:
-                    datatosend[i["country"]] = {"fillKey":keyin , "numberOfThings":i[argu]}
+                    datatosend[i["country"]] = {"fillKey":keyin , "cases": format(i['cases'], ',d'), "deaths": format(i['deaths'], ',d'), "recovered": format(i['recovered'], ',d')}
                 else:
                     pass
             except:
@@ -122,7 +122,7 @@ def world_map(argu):
         <span class="popup">Total ${window.location.pathname.split('/')[2]}(${geo.properties.name}) : ${data.numberOfThings}</span>
 
     '''
-    print(datatosend)
+    # print(datatosend)
     return template('worldmap.tpl' ,url=url ,datalist=datatosend)
 
 
