@@ -94,20 +94,37 @@
       }
       #stats {
         position: absolute;
-        flex-direction: row;
         color: white;
         font-family: "Roboto", sans-serif;
-        line-height: 2px;
         opacity: 80%;
+        padding-top: 10px;
       }
-      #time {
-        color: white;
-        font-family: "Roboto", sans-serif;
-        opacity: 80%;
+      .lineBreak {
+        display: none;
+      }
+      .nbsp {
+        display: static;
       }
       @media (orientation: portrait) and (max-width: 800px) {
         #mainHeaderFirst {
           animation: introMap 1s;
+        }
+        .lineBreak {
+          display: static;
+        }
+        #stats {
+          flex-direction: column;
+          line-height: normal;
+          position: relative;
+        }
+        .stats {
+          position: relative;
+        }
+        .nbsp {
+          display: none;
+        }
+        #casesNumber {
+          font-size: x-large;
         }
       }
     </style>
@@ -117,18 +134,23 @@
       <h1 id="mainHeaderFirst">World Map (affected regions)</h1>
     </div>
     <div id="stats">
-      <h3 id="time"></h3>
-      <p class="stats" style="font-size: xx-large;">
-        Total Cases: <span id="totinf"></span>
-      </p>
-      <p class="stats">
-        Total <span style="color: rgb(255, 118, 118);">Deaths</span>:
-        <span id="totded"></span>
-      </p>
-      <p class="stats">
-        Total <span style="color: rgb(141, 255, 118);">Recoveries</span>:
-        <span id="totrec"></span>
-      </p>
+      <span class="stats" id="time"></span>
+      <span id="casesNumber" class="stats"
+        ><br class="lineBreak" /><span class="nbsp"
+          >&nbsp &nbsp &nbsp &nbsp</span
+        >Total Cases:
+        <span id="totinf"></span>
+      </span>
+      <span class="stats">
+        <br class="lineBreak" />
+        <span class="nbsp">&nbsp &nbsp &nbsp &nbsp</span> Total Deaths:
+        <span style="color: rgb(255, 118, 118);" id="totded"></span>
+      </span>
+      <span class="stats">
+        <br class="lineBreak" />
+        <span class="nbsp">&nbsp &nbsp &nbsp &nbsp</span> Total Recoveries:
+        <span style="color: rgb(141, 255, 118);" id="totrec"></span>
+      </span>
     </div>
     <div id="worldMap"></div>
   </body>

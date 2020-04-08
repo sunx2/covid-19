@@ -41,9 +41,13 @@
     </div>
     <div id="countryInfo">
       <span>Total Cases: <span id="numberOfTotalCases"></span></span>
-      <span>, Total Deaths: <span id="numberOfTotalDeaths"></span></span>
       <span
-        >, Total Recoveries: <span id="numberOfTotalRecoveries"></span
+        >, Total <span style="color: rgb(255, 118, 118);">Deaths</span>:
+        <span id="numberOfTotalDeaths"></span
+      ></span>
+      <span
+        >, Total <span style="color: rgb(118, 255, 118);">Recoveries</span>:
+        <span id="numberOfTotalRecoveries"></span
       ></span>
       <span>, Cases Today: <span id="CasesToday"></span></span>
       <span>, Deaths Today: <span id="DeathsToday"></span></span>
@@ -52,8 +56,10 @@
   <script>
     var datalist = JSON.parse("{{datalist}}".replace(/&#039;/g, '"'));
     document.getElementById("CountryName").innerHTML = datalist.country;
-    document.getElementById("numberOfTotalDeaths").innerHTML = datalist.total_deaths;
-    document.getElementById("numberOfTotalRecoveries").innerHTML = datalist.total_recovered;
+    document.getElementById("numberOfTotalDeaths").innerHTML =
+      datalist.total_deaths;
+    document.getElementById("numberOfTotalRecoveries").innerHTML =
+      datalist.total_recovered;
     document.getElementById("CasesToday").innerHTML = datalist.today_cases;
     document.getElementById("DeathsToday").innerHTML = datalist.today_deaths;
     document.getElementById("numberOfTotalCases").innerHTML =
