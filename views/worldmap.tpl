@@ -20,7 +20,7 @@
         aspect-ratio: 1.777777777777778;
         opacity: 80%;
         animation: introMap 2s;
-        transform: scale(1, 1.1); /* To cure my OCD */
+        transform: scale(1, 1.1); 
         z-index: 1;
         transform: translate(0%, -5%);
         overflow: hidden;
