@@ -92,7 +92,7 @@
         min-width: 100%;
         min-height: 100%;
       }
-      @media screen and (max-width: 600px) {
+      @media (orientation: portrait) and (max-width: 800px) {
         #mainSection {
           width: 90%;
           height: 90%;
