@@ -41,15 +41,12 @@ def countries(argu):
         datatosend['total_recovered'] = format(data_country['recovered'], ',d')
         new_dict = {}
         new_data = {key:value for key, value in data['timeline']['cases'].items() if value != 0}
-        # print(new_data)
         for key, value in new_data.items():
             new_dict_count = list(new_dict.values()).count(value)
             old_dict_count = list(new_data.values()).count(value)
             if new_dict_count < (old_dict_count / 2):
                 new_dict[key] = value
                 dates.append(date_format(key))
-                # print(date_format(key))
-        # print(new_dict)
         datatosend['dates'] = dates
         
         for i in data['timeline']:
@@ -63,7 +60,6 @@ def countries(argu):
         return data['message']
     datatosend['length'] = len(dates)
     datatosend['country'] = argu.title()
-    # print(datatosend)
     return template('countryGraph.tpl', url = url, datalist=datatosend)
 
 @route("/worldmap/" , name="worldmap")
@@ -122,7 +118,6 @@ def world_map():
         <span class="popup">Total ${window.location.pathname.split('/')[2]}(${geo.properties.name}) : ${data.numberOfThings}</span>
 
     '''
-    # print(datatosend)
     return template('worldmap.tpl' ,url=url ,datalist=datatosend)
 
 
