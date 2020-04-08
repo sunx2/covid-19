@@ -43,33 +43,44 @@
   <script>
     var datalist = JSON.parse("{{datalist}}".replace(/&#039;/g, '"'));
     document.getElementById("CountryName").innerHTML = datalist.country;
-    document.getElementById("numberOfTotalCases").innerHTML = ""; //Change this to total cases
+    document.getElementById("numberOfTotalCases").innerHTML = datalist.total_cases; //Change this to total cases
     var ctx = document.getElementById("myChart").getContext("2d");
     var myChart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: datalist.x, //X AXIS
+        labels: datalist.dates, //X AXIS
         datasets: [
           {
             label: "# of cases",
-            data: datalist.y, //Y AXIS
+            data: datalist.cases, //Y AXIS
             backgroundColor: Array(datalist.length).fill(
-              "rgba(255, 99, 132, 0.2)"
+              "rgba(48, 90, 242, 0.2)"
             ),
-            borderColor: Array(datalist.length).fill("rgba(255, 99, 132, 1)"),
-            borderWidth: 1,
-            order: 1,
+            borderColor: Array(datalist.length).fill("rgba(48, 90, 242, 1)"),
+            borderWidth: 1, 
+            order: 3,
           },
           {
             label: "# of recoveries",
-            data: datalist.y, //CHANGE THIS TO RECOVERY DATASET
+            data: datalist.recovered, //CHANGE THIS TO RECOVERY DATASET
             backgroundColor: Array(datalist.length).fill(
-              "rgba(107, 107, 255, 0.2)"
+              "rgba(50, 205, 50, 0.2)"
             ),
-            borderColor: Array(datalist.length).fill("rgba(107, 107, 255, 1)"),
+            borderColor: Array(datalist.length).fill("rgba(50, 205, 50, 1)"),
+            borderWidth: 1,
+            order: 2,
+          },
+          {
+            label: "# of deaths",
+            data: datalist.deaths, //Y AXIS
+            backgroundColor: Array(datalist.length).fill(
+              "rgba(255, 0, 0, 0.2)"
+            ),
+            borderColor: Array(datalist.length).fill("rgba(255, 0, 0, 1)"),
             borderWidth: 1,
             order: 1,
           },
+          
         ],
       },
       options: {
