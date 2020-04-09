@@ -2,9 +2,35 @@
 Website for live coronavirus reports.
 
 
-### [Visit the site](http://covid19-watch.herokuapp.com/)
+### Visit the site
+http://covid19-watch.herokuapp.com/
 
-API used: https://github.com/novelcovid/api
+The novel Corona virus, also known as COVID-19 is the reason for thousands of deaths all over the world. There is no available vaccine or cure for it thus far, but with proper care and vigilance, it can be controlled and prevented. The disease causes respiratory illness and is similar to a flu. Some common symptoms include coughing, sneezing, fever, fatigue and difficulty in breathing (in severe cases). 
+
+### Some methods for prevention:
+* Wash the hands frequently with an alcohol-based hand rub or a soap.
+* Maintain a distance of at least 1m (3 feet) from a person who is coughing or sneezing.
+* Avoid touching the face, especially eyes, mouth and nose. 
+* Cover the mouth and nose with a bent elbow or a tissue in case of coughing and sneezing. Dispose the used tissue properly.
+* Avoid going out and stay at home. 
+
+
+
+### WHO advice for public:
+https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public
+
+### WHO Q&A on coronavirus:
+https://www.who.int/news-room/q-a-detail/q-a-coronaviruses
+
+### Coronavirus Resource Center, 2020
+https://www.health.harvard.edu/diseases-and-conditions/coronavirus-resource-center
+
+### Global scale of the pandemic 
+https://ourworldindata.org/coronavirus
+
+
+### Resources used in website 
+https://github.com/novelcovid/api
 
 ## Contributors ✨
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
