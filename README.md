@@ -14,16 +14,16 @@ Some methods for prevention
 
 
 
-# WHO advice for public:
+### WHO advice for public:
 https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public
 
-# WHO Q&A on coronavirus:
+### WHO Q&A on coronavirus:
 https://www.who.int/news-room/q-a-detail/q-a-coronaviruses
 
-# Coronavirus Resource Center, 2020
+### Coronavirus Resource Center, 2020
 https://www.health.harvard.edu/diseases-and-conditions/coronavirus-resource-center
 
-# Global scale of the pandemic 
+### Global scale of the pandemic 
 https://ourworldindata.org/coronavirus
 
 
