@@ -97,13 +97,17 @@
         color: white;
         font-family: "Roboto", sans-serif;
         opacity: 80%;
-        padding-top: 10px;
+        padding: 10px;
+        bottom: 0;
       }
       .lineBreak {
-        display: none;
+        display: static;
       }
       .nbsp {
-        display: static;
+        display: none;
+      }
+      #casesNumber {
+        font-size: x-large;
       }
       @media (orientation: portrait) and (max-width: 800px) {
         #mainHeaderFirst {
@@ -113,18 +117,13 @@
           display: static;
         }
         #stats {
-          flex-direction: column;
           line-height: normal;
-          position: relative;
         }
         .stats {
           position: relative;
         }
         .nbsp {
           display: none;
-        }
-        #casesNumber {
-          font-size: x-large;
         }
       }
     </style>
