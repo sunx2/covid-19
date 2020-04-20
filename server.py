@@ -65,7 +65,7 @@ def countries(argu):
 @route("/worldmap/" , name="worldmap")
 def world_map():
     datatosend = {}
-    all_url = "https://corona.lmao.ninja/all"
+    all_url = "https://corona.lmao.ninja/v2/all"
     data_all = requests.get(all_url).json()
     datatosend['all_cases'] = format(data_all['cases'], ',d')
     datatosend['all_deaths'] = format(data_all['deaths'], ',d')
