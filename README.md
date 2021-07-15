@@ -2,8 +2,8 @@
 Website for live coronavirus reports.
 
 
-### Visit the site
-http://covid19-watch.herokuapp.com/
+### NOT HOSTED RIGHT NOW
+
 
 The novel Corona virus, also known as COVID-19 is the reason for thousands of deaths all over the world. There is no available vaccine or cure for it thus far, but with proper care and vigilance, it can be controlled and prevented. The disease causes respiratory illness and is similar to a flu. Some common symptoms include coughing, sneezing, fever, fatigue and difficulty in breathing (in severe cases). 
 
